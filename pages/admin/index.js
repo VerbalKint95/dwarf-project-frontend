@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { isAuthenticated, getUserRole, isAdmin } from '../../utils/auth';
+import { useEffect} from 'react';
+import {isAdmin } from '../../utils/auth';
 
 const AdminIndexPage = () => {
   const router = useRouter();
