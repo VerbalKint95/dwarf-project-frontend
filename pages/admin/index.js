@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { isAuthenticated, getUserRole } from '../../utils/auth';
+import { isAuthenticated, getUserRole, isAdmin } from '../../utils/auth';
 
 const AdminIndexPage = () => {
   const router = useRouter();
-  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     // Vérifie si l'utilisateur est un administrateur lors du montage de la page
@@ -19,14 +18,6 @@ const AdminIndexPage = () => {
     checkAdmin();
   }, []);
 
-  useEffect(() => {
-    const role = getUserRole();
-    if (!isAuthenticated() || role === 'ADMIN') {
-      router.push('/auth/login');
-    } else {
-      setIsAdmin(true);
-    }
-  }, []);
 
   const handleNavigateToDwarfsPage = () => {
     router.push('/admin/dwarf');
